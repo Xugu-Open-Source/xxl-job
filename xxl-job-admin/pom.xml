@@ -59,11 +59,17 @@
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>${mybatis-spring-boot-starter.version}</version>
 		</dependency>
-		<!-- mysql -->
+<!--		&lt;!&ndash; mysql &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>com.mysql</groupId>-->
+<!--			<artifactId>mysql-connector-j</artifactId>-->
+<!--			<version>${mysql-connector-j.version}</version>-->
+<!--		</dependency>-->
+		<!-- xugu-jdbc -->
 		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
-			<version>${mysql-connector-j.version}</version>
+			<groupId>com.xugudb</groupId>
+			<artifactId>xugu-jdbc</artifactId>
+			<version>${xugu-connector-java.version}</version>
 		</dependency>
 
 		<!-- xxl-job-core -->
