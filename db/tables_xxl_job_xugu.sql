@@ -1,5 +1,4 @@
 use `system`;
-    drop database `xxl_job`;
 CREATE database if NOT EXISTS `xxl_job` character set utf8;
 use `xxl_job`;
 
