@@ -102,11 +102,17 @@
 			<artifactId>c3p0</artifactId>
 			<version>${c3p0.version}</version>
 		</dependency>
-		<!-- mysql-connector -->
+<!--		&lt;!&ndash; mysql-connector &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>mysql</groupId>-->
+<!--			<artifactId>mysql-connector-java</artifactId>-->
+<!--			<version>${mysql-connector-java.version}</version>-->
+<!--		</dependency>-->
+		<!-- xugu-jdbc -->
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql-connector-java.version}</version>
+			<groupId>com.xugudb</groupId>
+			<artifactId>xugu-jdbc</artifactId>
+			<version>${xugu-connector-java.version}</version>
 		</dependency>
 		<!-- mybatis-spring -->
 		<dependency>
