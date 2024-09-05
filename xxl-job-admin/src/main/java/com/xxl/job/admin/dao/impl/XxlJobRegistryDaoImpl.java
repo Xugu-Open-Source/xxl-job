@@ -21,14 +21,14 @@ public class XxlJobRegistryDaoImpl implements IXxlJobRegistryDao {
 
     @Override
     public int removeDead(int timeout) {
-        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> params = new HashMap();
         params.put("timeout", timeout);
         return sqlSessionTemplate.delete("XxlJobRegistryMapper.removeDead", params);
     }
 
     @Override
     public List<XxlJobRegistry> findAll(int timeout) {
-        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> params = new HashMap();
         params.put("timeout", timeout);
         return sqlSessionTemplate.selectList("XxlJobRegistryMapper.findAll", params);
     }
