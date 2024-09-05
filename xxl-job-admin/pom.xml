@@ -113,11 +113,17 @@
 			<artifactId>mybatis</artifactId>
 			<version>3.2.8</version>
 		</dependency>
-		<!-- mysql-connector -->
+<!--		&lt;!&ndash; mysql-connector &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>mysql</groupId>-->
+<!--			<artifactId>mysql-connector-java</artifactId>-->
+<!--			<version>5.1.29</version>-->
+<!--		</dependency>-->
+		<!-- xugu-jdbc -->
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.29</version>
+			<groupId>com.xugudb</groupId>
+			<artifactId>xugu-jdbc</artifactId>
+			<version>12.3.1</version>
 		</dependency>
 
 		<!-- httpclient -->
