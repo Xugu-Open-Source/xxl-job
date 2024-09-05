@@ -220,10 +220,10 @@
 
 	<select id="findFailJobLogIds" resultType="long" >
 		SELECT id FROM `xxl_job_log`
-		WHERE !(
-			(trigger_code in (0, 200) and handle_code = 0)
-			OR
-			(handle_code = 200)
+		WHERE (
+			(trigger_code not in (0, 200) or handle_code != 0)
+			AND
+			(handle_code != 200)
 		)
 		AND `alarm_status` = 0
 		ORDER BY id ASC
