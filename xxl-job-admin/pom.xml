@@ -53,6 +53,11 @@
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
 		</dependency>
+		<!-- xugu -->
+		<dependency>
+			<groupId>com.xugudb</groupId>
+			<artifactId>xugu-jdbc</artifactId>
+		</dependency>
 
 		<!-- xxl-job-core -->
 		<dependency>

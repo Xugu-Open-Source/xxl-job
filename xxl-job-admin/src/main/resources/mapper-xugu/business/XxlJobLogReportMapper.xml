@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxl.job.admin.business.mapper.XxlJobLogReportMapper">
+	
+	<resultMap id="XxlJobLogReport" type="com.xxl.job.admin.business.model.XxlJobLogReport" >
+		<result column="id" property="id" />
+	    <result column="trigger_day" property="triggerDay" />
+		<result column="running_count" property="runningCount" />
+	    <result column="suc_count" property="sucCount" />
+	    <result column="fail_count" property="failCount" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		t.id,
+		t.trigger_day,
+		t.running_count,
+		t.suc_count,
+		t.fail_count,
+		t.update_time
+	</sql>
+	
+	<insert id="saveOrUpdate" parameterType="com.xxl.job.admin.business.model.XxlJobLogReport" useGeneratedKeys="true" keyProperty="id" >
+		MERGE INTO xxl_job_log_report t
+		USING (
+			SELECT
+				#{triggerDay} AS trigger_day,
+				#{runningCount} AS running_count,
+				#{sucCount} AS suc_count,
+				#{failCount} AS fail_count,
+				#{updateTime} AS update_time
+		) s
+		ON (t.trigger_day = s.trigger_day)
+		WHEN MATCHED THEN
+			UPDATE SET
+				t.running_count = s.running_count,
+				t.suc_count = s.suc_count,
+				t.fail_count = s.fail_count,
+				t.update_time = s.update_time
+		WHEN NOT MATCHED THEN
+			INSERT (trigger_day, running_count, suc_count, fail_count, update_time)
+			VALUES (s.trigger_day, s.running_count, s.suc_count, s.fail_count, s.update_time)
+	</insert>
+
+	<select id="queryLogReport" resultMap="XxlJobLogReport">
+		SELECT <include refid="Base_Column_List" />
+		FROM xxl_job_log_report AS t
+		WHERE t.trigger_day between #{triggerDayFrom} and #{triggerDayTo}
+		ORDER BY t.trigger_day ASC
+	</select>
+
+	<select id="queryLogReportTotal" resultMap="XxlJobLogReport">
+		SELECT
+			SUM(running_count) running_count,
+			SUM(suc_count) suc_count,
+			SUM(fail_count) fail_count
+		FROM xxl_job_log_report AS t
+	</select>
+
+</mapper>
