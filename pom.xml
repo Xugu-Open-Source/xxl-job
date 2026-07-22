@@ -41,6 +41,7 @@
 		<!-- db -->
 		<mybatis-spring-boot-starter.version>2.3.2</mybatis-spring-boot-starter.version>
 		<mysql-connector-j.version>9.1.0</mysql-connector-j.version>
+		<xugu-jdbc.version>12.3.6</xugu-jdbc.version>
 		<!-- dynamic language -->
 		<groovy.version>4.0.24</groovy.version>
 	</properties>

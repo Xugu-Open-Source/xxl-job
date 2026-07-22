@@ -69,6 +69,12 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<version>${mysql-connector-j.version}</version>
 		</dependency>
+		<!-- xugu -->
+		<dependency>
+			<groupId>com.xugudb</groupId>
+			<artifactId>xugu-jdbc</artifactId>
+			<version>${xugu-jdbc.version}</version>
+		</dependency>
 
 		<!-- xxl-job-core -->
 		<dependency>
