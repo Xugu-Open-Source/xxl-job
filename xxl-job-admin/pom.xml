@@ -121,4 +121,27 @@
 		</plugins>
 	</build>
 
+	<profiles>
+		<!-- XuGu real-database IT gate: control plane runs `mvn test -pl xxl-job-admin -Pxugu-it`
+		     with XUGU_IT=1 and XUGU_JDBC_* env. Only it/xugu ITs run; offline `mvn test`
+		     keeps the upstream unit-test selection unchanged. -->
+		<profile>
+			<id>xugu-it</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<excludes combine.self="override"/>
+							<includes>
+								<include>**/it/xugu/**/*IT.java</include>
+							</includes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>
