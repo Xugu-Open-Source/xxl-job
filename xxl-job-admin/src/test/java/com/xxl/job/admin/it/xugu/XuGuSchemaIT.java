@@ -35,8 +35,8 @@ class XuGuSchemaIT {
 
         Class.forName("com.xugu.cloudjdbc.Driver");
         try (Connection connection = openXuguConnection()) {
-            // Control-plane integration gate: stdout marker proves a real engine connection.
-            System.out.println("XUGU_ENGINE_CONNECTED product=" + connection.getMetaData().getDatabaseProductVersion());
+            // Control-plane integration gate: stderr marker proves a real engine connection.
+            System.err.println("XUGU_ENGINE_CONNECTED product=" + connection.getMetaData().getDatabaseProductVersion());
 
             List<String> statements = splitStatements(Files.readAllLines(script, StandardCharsets.UTF_8));
             dropXxlTables(connection, statements);
@@ -47,7 +47,7 @@ class XuGuSchemaIT {
             }
             assertTrue(countRows(connection, "xxl_job_group") >= 1, "seed data missing in xxl_job_group");
             assertTrue(countRows(connection, "xxl_job_info") >= 1, "seed data missing in xxl_job_info");
-            System.out.println("XUGU_SCHEMA_APPLIED tables=" + xxlTables(statements).size());
+            System.err.println("XUGU_SCHEMA_APPLIED tables=" + xxlTables(statements).size());
         }
     }
 

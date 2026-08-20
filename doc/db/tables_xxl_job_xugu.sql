@@ -4,9 +4,13 @@
 #
 # Create independent database XXL_JOB, then tables.
 # Connect example: jdbc:xugu://127.0.0.1:5138/XXL_JOB
+#
+# The column set below mirrors the upstream 2.5.0 MySQL script (doc/db/tables_xxl_job.sql)
+# so that every column referenced by mybatis-mapper/*Mapper.xml exists.
+#
 
 use `system`;
-CREATE database if NOT EXISTS `XXL_JOB` char set utf8;
+CREATE database if NOT exists `XXL_JOB` char set utf8;
 use `XXL_JOB`;
 
 CREATE TABLE `xxl_job_info` (
