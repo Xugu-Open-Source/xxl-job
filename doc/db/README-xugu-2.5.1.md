@@ -1,6 +1,6 @@
-# XXL-JOB 2.5.0 虚谷数据库适配说明
+# XXL-JOB 2.5.1 虚谷数据库适配说明
 
-标签：`2.5.0-xugu`  
+标签：`2.5.1-xugu`（独立版本线，目标框架仍为 xxl-job 2.5.0）  
 基线：上游 [xuxueli/xxl-job@2.5.0](https://github.com/xuxueli/xxl-job/tree/2.5.0)
 
 ## 使用步骤
