@@ -1,11 +1,11 @@
 #
-# XXL-JOB v2.5.0 (XuGu)
+# XXL-JOB v3.0.0 (XuGu)
 # Copyright (c) 2015-present, xuxueli.
 #
 # Create independent database XXL_JOB, then tables.
 # Connect example: jdbc:xugu://127.0.0.1:5138/XXL_JOB
 #
-# The column set below mirrors the upstream 2.5.0 MySQL script (doc/db/tables_xxl_job.sql)
+# The column set below mirrors the upstream 3.0.0 MySQL script (doc/db/tables_xxl_job.sql)
 # so that every column referenced by mybatis-mapper/*Mapper.xml exists.
 #
 

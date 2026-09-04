@@ -21,6 +21,8 @@ public interface XxlJobRegistryDao {
     public List<XxlJobRegistry> findAll(@Param("timeout") int timeout,
                                         @Param("nowTime") Date nowTime);
 
+    /* XuGu: update-then-insert replaces upstream registrySaveOrUpdate
+       (XuGu has no MySQL-style ON DUPLICATE KEY UPDATE) */
     public int registryUpdate(@Param("registryGroup") String registryGroup,
                               @Param("registryKey") String registryKey,
                               @Param("registryValue") String registryValue,

@@ -8,13 +8,14 @@ import com.xxl.job.admin.dao.XxlJobInfoDao;
 import com.xxl.job.admin.dao.XxlJobLogGlueDao;
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.glue.GlueTypeEnum;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 
@@ -25,14 +26,14 @@ import java.util.List;
 @Controller
 @RequestMapping("/jobcode")
 public class JobCodeController {
-	
+
 	@Resource
 	private XxlJobInfoDao xxlJobInfoDao;
 	@Resource
 	private XxlJobLogGlueDao xxlJobLogGlueDao;
 
 	@RequestMapping
-	public String index(HttpServletRequest request, Model model, int jobId) {
+	public String index(HttpServletRequest request, Model model, @RequestParam("jobId") int jobId) {
 		XxlJobInfo jobInfo = xxlJobInfoDao.loadById(jobId);
 		List<XxlJobLogGlue> jobLogGlues = xxlJobLogGlueDao.findByJobId(jobId);
 
@@ -53,10 +54,14 @@ public class JobCodeController {
 		model.addAttribute("jobLogGlues", jobLogGlues);
 		return "jobcode/jobcode.index";
 	}
-	
+
 	@RequestMapping("/save")
 	@ResponseBody
-	public ReturnT<String> save(HttpServletRequest request, int id, String glueSource, String glueRemark) {
+	public ReturnT<String> save(HttpServletRequest request,
+								@RequestParam("id") int id,
+								@RequestParam("glueSource") String glueSource,
+								@RequestParam("glueRemark") String glueRemark) {
+
 		// valid
 		if (glueRemark==null) {
 			return new ReturnT<String>(500, (I18nUtil.getString("system_please_input") + I18nUtil.getString("jobinfo_glue_remark")) );
@@ -71,7 +76,7 @@ public class JobCodeController {
 
 		// valid permission
 		PermissionInterceptor.validJobGroupPermission(request, existsJobInfo.getJobGroup());
-		
+
 		// update new code
 		existsJobInfo.setGlueSource(glueSource);
 		existsJobInfo.setGlueRemark(glueRemark);
@@ -96,5 +101,5 @@ public class JobCodeController {
 
 		return ReturnT.SUCCESS;
 	}
-	
+
 }
